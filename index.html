@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AUPROHADA – Association Universitaire pour la Promotion du Droit OHADA</title>
+<meta name="description" content="L’AUPROHADA promeut le droit OHADA, cultive l’excellence juridique et rapproche l’université des professionnels du droit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#F15A0A;--o2:#ff7a33;--d:#14141B;--d2:#1d1d27;--bg:#fff;--w:#fff;--g:#667085;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+body{font-family:"Manrope",system-ui,sans-serif;font-weight:500;background:var(--bg);color:var(--d);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--o);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.1;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.6vw,2.8rem);font-weight:800}
+h2 em,h1 em{font-style:normal;color:var(--o)}
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin:14px auto 0;max-width:1200px;padding:0 20px}
+.nav>div{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--w);border-radius:20px;padding:10px 14px 10px 20px;box-shadow:0 8px 30px rgba(20,20,27,.06)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem}
+.logo i{display:grid;place-items:center;width:34px;height:34px;background:var(--d);color:var(--o);border-radius:10px;font-style:normal}
+.links{display:flex;gap:26px;font-size:.9rem;font-weight:600}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--o);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.links a:hover::after,.links a.on::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--o);color:#fff;font-weight:700;font-size:.92rem;padding:8px 8px 8px 22px;border-radius:99px;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:var(--o2)}
+.btn b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--w);color:var(--o);transition:transform .3s}
+.btn:hover b{transform:rotate(45deg)}
+.btn.w{background:var(--w);color:var(--d)}
+.btn.o{background:none;border:1.5px solid #d6dde6;color:var(--d);padding:8px 8px 8px 22px}
+.btn.o b{background:var(--o);color:#fff}
+.burger{display:none;width:44px;height:44px;border-radius:12px;background:var(--d);color:#fff;font-size:1.3rem}
+/* transition */
+#cur{position:fixed;inset:0;z-index:99;background:var(--o);transform:translateY(100%);pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#fff;font-weight:800;font-size:clamp(1.6rem,5vw,3rem)}
+#cur::before{content:"";position:absolute;inset:0;background:var(--d);clip-path:polygon(0 0,100% 0,100% 12%,0 22%)}
+.cur-logo{position:relative;z-index:1;width:clamp(76px,14vw,112px);aspect-ratio:1;border:5px solid rgba(255,255,255,.9);border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 12px 36px rgba(0,0,0,.25)}
+.cur-logo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+#cur>span{position:relative;z-index:1}
+/* hero */
+.hero{position:relative;margin-top:14px;min-height:min(78vh,620px);border-radius:32px;overflow:hidden;display:grid;place-items:center;text-align:center;color:#fff;padding:90px 22px;background:#14141b}
+.hero-slide{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(20,20,27,.78),rgba(20,20,27,.52)),var(--slide-image);background-position:center,center 48%;background-size:cover;opacity:0;transition:opacity .9s ease}
+.hero-slide.is-active{opacity:1}
+.hero-controls{position:absolute;right:24px;bottom:24px;z-index:3;display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid rgba(255,255,255,.26);border-radius:99px;background:rgba(20,20,27,.55);backdrop-filter:blur(8px)}
+.hero-controls button{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.4);border-radius:50%;color:#fff;font-size:1.2rem;transition:background .2s,transform .2s}
+.hero-controls button:hover{background:var(--o);transform:scale(1.06)}
+.hero-controls span{min-width:42px;color:#fff;font-size:.78rem;font-weight:700}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.35) 1.4px,transparent 1.6px);background-size:26px 26px;-webkit-mask:radial-gradient(circle at 70% 50%,#000,transparent 70%);mask:radial-gradient(circle at 70% 50%,#000,transparent 70%);animation:drift 18s linear infinite}
+@keyframes drift{to{background-position:260px 130px}}
+.scale{position:absolute;right:-30px;bottom:-40px;width:min(520px,70%);opacity:.18;animation:sway 7s ease-in-out infinite;transform-origin:50% 12%}
+@keyframes sway{50%{transform:rotate(3deg)}}
+.hero-copy{position:relative;z-index:1;width:min(100%,820px)}
+.tag{display:inline-block;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:5px 16px;font-size:.78rem;margin-bottom:22px;background:rgba(255,255,255,.08);backdrop-filter:blur(6px)}
+.hero .tag{display:block;width:fit-content;max-width:100%;margin:0 auto 22px;border-radius:18px;padding:8px 16px;line-height:1.45;text-wrap:balance}
+.hero p{margin:22px auto 30px;max-width:560px;color:#e8e2dc}
+.hero h1 span{display:inline-block;overflow:hidden;vertical-align:top}
+.hero h1 span i{display:inline-block;font-style:normal;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{transform:none}}
+/* cards */
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.card{position:relative;background:var(--w);border-radius:26px;padding:26px 24px 70px;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,20,27,.1)}
+.card .ic{font-size:1.9rem;color:var(--o)}
+.card .book-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#fff2e9;color:var(--o)}
+.book-icon svg{width:24px;height:24px;display:block}
+.card h3{font-size:1.2rem;margin:14px 0 8px;padding-bottom:14px;border-bottom:1px solid #e4e9ef;position:relative}
+.card h3::after{content:"";position:absolute;right:0;bottom:-4px;width:7px;height:7px;border-radius:50%;background:#c3ccd8}
+.card p{font-size:.88rem;color:var(--g)}
+.arr{position:absolute;right:0;bottom:0;width:58px;height:58px;background:var(--bg);border-top-left-radius:26px;display:grid;place-items:center}
+.arr b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--w);font-size:.9rem;transition:.3s}
+.card:hover .arr b{background:var(--o);color:#fff;transform:rotate(45deg)}
+/* about */
+.sec{padding:80px 0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
+.pic{position:relative;min-height:520px;border-radius:30px 30px 30px 90px;overflow:hidden;background:var(--d)}
+.pic>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.pic em{position:absolute;left:22px;bottom:22px;right:22px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);border-radius:18px;padding:14px 18px;color:#fff;font-style:normal;font-size:.9rem}
+.small{display:inline-block;background:var(--w);border-radius:99px;padding:3px 14px;font-size:.78rem;font-weight:600;color:var(--o);margin-bottom:14px}
+.about-intro{margin:12px 0 20px;color:#475467;font-size:1.06rem;font-weight:600;line-height:1.8}
+.tabs{display:flex;gap:10px;margin:22px 0 18px;flex-wrap:wrap}
+.tabs button{padding:10px 22px;border-radius:99px;background:var(--w);font-weight:700;font-size:.82rem;transition:.25s}
+.tabs button[aria-selected=true]{background:var(--o);color:#fff}
+.tp{animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.ticks{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:8px;font-weight:600;font-size:.92rem}
+.ticks li::before{content:"✓";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--o);color:#fff;font-size:.7rem;margin-right:10px}
+/* dark */
+.dark{background:var(--d);color:#fff;border-radius:32px;padding:56px 36px;margin:0 20px}
+.dark h2{max-width:520px}
+.dark .sub{color:#aeb4c0;max-width:420px;font-size:.92rem}
+.dh{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.ctr{display:flex;gap:10px}
+.ctr button{width:46px;height:46px;border-radius:50%;background:var(--w);color:var(--d);font-weight:800;transition:.25s}
+.ctr button:last-child{background:var(--o);color:#fff}
+.ctr button:hover{transform:scale(1.1)}
+.trk{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.trk::-webkit-scrollbar{display:none}
+.act{flex:0 0 min(340px,82%);scroll-snap-align:start;background:var(--d2);border-radius:26px;padding:10px;border:1px solid #2a2a37;transition:transform .35s}
+.act:hover{transform:translateY(-6px)}
+.act .im{height:170px;border-radius:20px;position:relative;overflow:hidden;background:var(--d)}
+.act .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.act:hover .im img{transform:scale(1.05)}
+.act h3{font-size:1.1rem;margin:14px 10px 6px}
+.act p{margin:0 10px 14px;color:#aeb4c0;font-size:.86rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}
+.steps div{position:relative}
+.steps b{display:block;font-size:4.2rem;font-weight:800;color:transparent;-webkit-text-stroke:1.5px #c9d2de;line-height:1}
+.steps h3{font-size:1.05rem;margin:6px 0 4px}
+.steps p{font-size:.86rem;color:var(--g)}
+/* pages */
+.page{display:none}
+.page.on{display:block}
+.ph{margin-top:14px;border-radius:32px;padding:80px 28px;color:#fff;background:radial-gradient(50% 90% at 90% 100%,rgba(241,90,10,.28),transparent 70%),linear-gradient(145deg,#1d1d27,#101014)}
+.ph p{max-width:560px;margin-top:16px;color:#e0d8d0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g3 .card{padding-bottom:30px}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.info-card{min-width:0;background:var(--w);border:1px solid #e1e7ee;border-radius:24px;padding:24px}
+.info-card h3{font-size:1.12rem;margin:0 0 10px}
+.info-card p{color:var(--g);font-size:.9rem}
+.info-card p+p{margin-top:10px}
+.section-network-summary{display:grid;gap:5px;margin-top:18px;padding:20px 24px;border-left:5px solid var(--o);border-radius:0 18px 18px 0;background:#fff;box-shadow:0 8px 24px rgba(20,20,27,.06)}
+.section-network-summary strong{color:var(--o);font-size:clamp(1.5rem,3vw,2rem);line-height:1.25}
+.section-network-summary span{color:var(--d);font-weight:600}
+#sections-list .info-card{display:flex;flex-direction:column;align-items:flex-start}
+#sections-list .info-card p{width:100%}
+#sections-list .section-report{margin-top:auto;padding-top:16px;font-weight:700}
+.info-card a,.resource-link{color:var(--o);font-weight:700;overflow-wrap:anywhere}
+.info-card a:hover,.resource-link:hover{text-decoration:underline}
+.eyebrow{display:inline-block;margin-bottom:9px;color:var(--o);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.notice{margin-top:18px;padding:16px 20px;border-left:4px solid var(--o);border-radius:0 16px 16px 0;background:#fff7f2;color:#69432f;font-size:.88rem}
+.archive{display:flex;gap:18px;align-items:flex-start;margin-top:22px;padding:26px 28px;border:1px solid #30303b;border-radius:20px;background:#191920;color:#fff}
+.archive b{display:block;color:#ff9a66;white-space:nowrap}
+.archive p{color:#f2f4f7;font-size:.9rem;text-align:justify;text-justify:inter-word}
+.resource-list{display:grid;gap:12px;margin-top:22px}
+.resource-link{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--w);border:1px solid #e1e7ee;border-radius:16px;padding:16px 20px}
+.resource-link span{color:var(--d);font-weight:700}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.contact-card{min-width:0;background:var(--d);color:#fff;border-radius:24px;padding:24px}
+.contact-card h3{font-size:1.08rem;margin:0 0 12px}
+.contact-card p{color:#d0d3dc;font-size:.88rem}
+.contact-card p+p{margin-top:9px}
+.contact-card a{color:#ff9a66;overflow-wrap:anywhere}
+.contact-card .eyebrow{color:#ff9a66}
+.contact-card .status{display:inline-block;margin-top:12px;padding:4px 10px;border:1px solid #55515a;border-radius:99px;color:#f5c7ac;font-size:.73rem;font-weight:700}
+.section-details{margin-top:12px;border-top:1px solid #e4e9ef;padding-top:12px}
+.section-details summary{cursor:pointer;color:var(--o);font-weight:700;font-size:.86rem}
+.section-details p{margin-top:10px}
+.activity-card-photo{object-position:center}
+.photo-gallery{margin-top:24px}
+.photo-gallery figure{position:relative;min-height:220px;margin:0;border-radius:24px;overflow:hidden;background:var(--d)}
+.photo-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.photo-gallery figure:hover img{transform:scale(1.04)}
+.photo-gallery figcaption{position:absolute;inset:auto 0 0;padding:34px 16px 14px;color:#fff;font-size:.86rem;font-weight:700;background:linear-gradient(transparent,rgba(20,20,27,.88))}
+.activity-card-photo{display:block;width:calc(100% + 48px);height:190px;object-fit:cover;border-radius:26px 26px 18px 18px;margin:-26px -24px 18px}
+.activity-item{padding-bottom:30px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.chips span{background:var(--w);border-radius:99px;padding:8px 18px;font-weight:600;font-size:.86rem;border:1px solid #e1e7ee;transition:.25s}
+.chips span:hover{background:var(--o);color:#fff}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tl div{background:var(--d);color:#fff;border-radius:26px;padding:28px}
+.tl b{font-size:2.4rem;color:var(--o);display:block}
+form{display:grid;gap:14px;background:var(--w);border-radius:28px;padding:30px}
+label{font-weight:700;font-size:.86rem}
+input,textarea{width:100%;font:inherit;padding:14px 16px;border-radius:14px;border:1.5px solid #dde4ec;background:var(--bg);margin-top:6px;transition:.25s}
+input:focus,textarea:focus{outline:0;border-color:var(--o);background:#fff}
+.ok{display:none;text-align:center;padding:20px;font-weight:700;color:var(--o)}
+.cg{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+/* footer */
+footer{background:var(--d);color:#fff;border-radius:32px 32px 0 0;margin-top:80px;padding:50px 0 30px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:30px}
+footer p,footer a{color:#aeb4c0;font-size:.88rem;display:block;margin:6px 0}
+footer a:hover{color:var(--o)}
+.nl{display:flex;gap:8px;margin-top:10px}
+.nl input{background:#23232e;border-color:#2f2f3d;color:#fff;margin:0}
+.nl button{background:var(--o);color:#fff;border-radius:14px;padding:0 20px;font-weight:700}
+.cp{border-top:1px solid #2a2a37;margin-top:30px;padding-top:18px;font-size:.8rem;color:#8b92a0}
+#pb{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--o),#ffb27a);transform:scaleX(0);transform-origin:left;z-index:120}
+.nav>div{transition:padding .3s,box-shadow .3s}
+.nav.sm>div{padding:6px 10px 6px 16px;box-shadow:0 12px 36px rgba(20,20,27,.14)}
+.btn,.ctr button,.tabs button,.nl button{position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn:hover::before{left:130%}
+.btn:active{transform:scale(.96)}
+.rp{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rp .6s ease-out forwards;pointer-events:none}
+@keyframes rp{to{transform:scale(3);opacity:0}}
+.btn.pulse{animation:pl 2.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(241,90,10,.5)}70%,100%{box-shadow:0 0 0 14px rgba(241,90,10,0)}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,70%) var(--my,60%),rgba(255,160,80,.28),transparent 70%);pointer-events:none}
+.fl{position:absolute;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:10px 16px;font-size:.8rem;font-weight:600;animation:fl 5s ease-in-out infinite}
+.fl.a{left:5%;bottom:14%}.fl.b{right:5%;top:20%;animation-delay:-2.5s}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,var(--o),transparent 60%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover::before{opacity:1}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:20px 0 64px}
+.st div{background:var(--w);border-radius:26px;padding:30px 26px;text-align:center}
+.st b{display:block;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;color:var(--o);line-height:1}
+.st span{display:block;margin-top:12px;color:var(--g);font-size:.88rem;font-weight:600;line-height:1.5}
+#up{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;z-index:60;opacity:0;transform:translateY(20px);pointer-events:none;transition:.35s;box-shadow:0 10px 24px rgba(241,90,10,.4)}
+#up.on{opacity:1;transform:none;pointer-events:auto}
+.logo img{width:42px;height:42px;border-radius:10px;object-fit:cover}
+.rv.done{transition:transform .25s,box-shadow .35s,opacity .3s;transition-delay:0s}
+p{font-size:.95rem;line-height:1.7;font-weight:500;text-align:justify;text-justify:inter-word}
+.card p,.act p,.ph p,.info-card p,.archive p,.contact-card p,.section-details p,.notice,.tp,.dark .sub,.steps p{font-size:.95rem;line-height:1.7;font-weight:500}
+@media(max-width:900px){.st{grid-template-columns:1fr}.fl{display:none}.info-grid,.contact-grid{grid-template-columns:1fr}}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:900px){
+.links,.nav .btn{display:none}.burger{display:block}
+.links.open{display:flex;position:absolute;top:70px;left:20px;right:20px;flex-direction:column;background:var(--w);padding:22px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.12)}
+.feat,.steps{grid-template-columns:1fr 1fr}.about,.cg,.g3,.tl,.fg{grid-template-columns:1fr}.pic{min-height:320px}.dark{margin:0 10px;padding:40px 20px}}
+@media(max-width:520px){.feat,.steps{grid-template-columns:1fr}}
+@media(max-width:520px){.hero-controls{right:16px;bottom:16px}.hero{padding-bottom:100px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 span i{transform:none}}
+</style>
+</head>
+<body>
+<div id="cur" aria-hidden="true"><span class="cur-logo"><img src="IMAGES/logo.jpg" alt=""></span><span>AUPROHADA</span></div>
+<div id="pb"></div><button id="up" aria-label="Haut de page">↑</button>
+<header class="nav" id="nv"><div>
+<a class="logo" href="#accueil"><img src="IMAGES/logo.jpg" alt="">AUPROHADA</a>
+<nav class="links" id="lk" aria-label="Navigation principale"><a href="#accueil" data-p="accueil">Accueil</a><a href="#apropos" data-p="apropos">À propos</a><a href="#ohada" data-p="ohada">L’OHADA</a><a href="#activites" data-p="activites">Activités</a><a href="#contact" data-p="contact">Contact</a></nav>
+<a class="btn pulse" href="#contact">Nous rejoindre <b>↗</b></a>
+<button class="burger" id="bg" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</div></header>
+
+<main>
+<!-- ACCUEIL -->
+<section class="page wrap" id="accueil">
+<div class="hero" aria-roledescription="diaporama" aria-label="Présentation de l’AUPROHADA">
+<span class="hero-slide is-active" style="--slide-image:url('IMAGES/Photo de couverture.jpg')" aria-hidden="true"></span>
+<span class="hero-slide" style="--slide-image:url('IMAGES/499545453_1154316950070344_5346061862304732221_n.jpg')" aria-hidden="true"></span>
+<span class="hero-slide" style="--slide-image:url('IMAGES/686540293_1461485166020186_4757292241862499057_n.jpg')" aria-hidden="true"></span>
+<span class="hero-slide" style="--slide-image:url('IMAGES/614021621_1359214489580588_2838388953701913086_n.jpg')" aria-hidden="true"></span>
+<div class="dots"></div>
+<svg class="scale" viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="3" aria-hidden="true"><path d="M100 20v150M60 170h80M30 55h140M30 55l-22 55a28 20 0 0 0 44 0zM170 55l-22 55a28 20 0 0 0 44 0z"/></svg>
+<div class="hero-copy"><span class="tag">« Promouvoir l’OHADA, notre mission »</span>
+<h1><span><i>Promouvoir le droit OHADA,</i></span> <span><i style="animation-delay:.15s">former les juristes</i></span> <span><i style="animation-delay:.3s">de demain</i></span></h1>
+<p>Nous vulgarisons le droit des affaires harmonisé en Afrique auprès des étudiants, des enseignants et des professionnels.</p>
+<a class="btn w" href="#activites">Découvrir nos activités <b style="background:var(--o);color:#fff">↗</b></a></div>
+<div class="hero-controls" aria-label="Commandes du diaporama">
+<button type="button" id="hero-prev" aria-label="Image précédente">‹</button>
+<span id="hero-counter" aria-live="polite">01 / 04</span>
+<button type="button" id="hero-next" aria-label="Image suivante">›</button>
+</div></div>
+
+<div class="sec about">
+<div class="pic rv"><img src="IMAGES/499545453_1154316950070344_5346061862304732221_n.jpg" alt="Une étudiante prend la parole lors d’une activité juridique"><em>« Promouvoir l’OHADA, notre mission »</em></div>
+<div class="rv"><span class="small">Qui sommes-nous</span>
+<p class="about-intro">L’Association Universitaire pour la Promotion du Droit OHADA rassemble des étudiants et des passionnés de droit autour d’une même ambition : mieux faire connaître le droit des affaires harmonisé en Afrique. Par ses formations, ses conférences, ses concours de plaidoirie et ses actions de sensibilisation, l’AUPROHADA encourage la maîtrise des textes, l’esprit critique et l’éloquence. Elle crée un espace où les connaissances universitaires rencontrent la pratique professionnelle, où les idées se confrontent et où se prépare une nouvelle génération de juristes engagés, rigoureux et ouverts sur les enjeux du continent.</p>
+<h2>L’engagement universitaire <em>au service du droit OHADA</em></h2>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="0">Notre mission</button><button role="tab" aria-selected="false" data-t="1">Notre vision</button><button role="tab" aria-selected="false" data-t="2">Notre histoire</button></div>
+<p class="tp" id="tp"></p>
+<a class="btn o" href="#apropos">En savoir plus sur l’association <b>↗</b></a></div>
+</div>
+
+<div class="feat" id="pil"></div>
+<div class="st"><div class="rv"><b data-n="2017">0</b><span>Année de création</span></div><div class="rv" style="--i:1"><b data-n="4">0</b><span>Axes d’engagement</span></div><div class="rv" style="--i:2"><b data-n="10">0</b><span>Matières du droit OHADA explorées</span></div></div>
+</section>
+<section class="page" id="accueil2"></section>
+
+<!-- À PROPOS -->
+<section class="page wrap" id="apropos">
+<div class="ph rv"><h1>À propos de <em>l’AUPROHADA</em></h1><p>Une association universitaire à but non lucratif et à caractère non syndical, engagée dans la promotion du droit OHADA et la formation des juristes.</p></div>
+<div class="sec">
+<h2 class="rv">Notre identité <em>et notre ambition</em></h2>
+<div class="info-grid">
+<article class="info-card rv"><span class="eyebrow">Présentation</span><h3>Une communauté au service du droit</h3><p>L’Association Universitaire pour la Promotion du Droit OHADA (AUPROHADA) est une association à but non lucratif et à caractère non syndical, créée le 31 janvier 2017 à l’initiative de Koffi Roméo Kouamé. Elle œuvre à la promotion et à la vulgarisation du droit des affaires harmonisé en Afrique auprès des étudiants, des universitaires et des professionnels.</p><p>Par ses activités de formation, de réflexion et de sensibilisation, l’AUPROHADA contribue au développement de la culture juridique et au rapprochement entre le monde universitaire et la pratique professionnelle.</p></article>
+<article class="info-card rv" style="--i:1"><span class="eyebrow">Vision</span><h3>Former des juristes compétents et rigoureux</h3><p>L’association ambitionne de contribuer à l’émergence d’une communauté de juristes capables de participer au développement du droit des affaires en Afrique.</p><p>Elle encourage la maîtrise des textes, l’esprit critique, la qualité du raisonnement, l’éloquence et la mobilisation des connaissances juridiques dans des situations pratiques.</p></article>
+</div>
+<h2 class="rv" style="margin-top:56px">Nos axes <em>d’engagement</em></h2>
+<div class="g3" style="margin-top:24px">
+<div class="card rv"><div class="ic">⚖</div><h3>Promotion du droit OHADA</h3><p>Rendre les textes, les Actes uniformes, la jurisprudence et les notions du droit des affaires harmonisé plus accessibles.</p></div>
+<div class="card rv" style="--i:1"><div class="ic">🎓</div><h3>Excellence universitaire</h3><p>Développer la rigueur, l’esprit critique, la recherche, l’argumentation et l’éloquence.</p></div>
+<div class="card rv" style="--i:2"><div class="ic">📚</div><h3>Formation pratique</h3><p>Apprendre par des formations, des conférences, des exercices et des mises en situation.</p></div>
+<div class="card rv"><div class="ic">🤝</div><h3>Réseau professionnel</h3><p>Créer des passerelles entre étudiants, anciens membres et professionnels du droit.</p></div>
+</div>
+<h2 class="rv" style="margin-top:56px">Nos valeurs</h2>
+<div class="chips rv"><span>Excellence</span><span>Partage</span><span>Coopération</span><span>Professionnalisation</span></div>
+<h2 class="rv" style="margin-top:56px">Organisation et réseau</h2>
+<div class="info-grid">
+<article class="info-card rv"><span class="eyebrow">Sections universitaires</span><h3>Une présence portée par les établissements</h3><p>Les sections relaient les missions de l’association au sein de leurs établissements et contribuent à la formation, à la vie universitaire et à la coopération interuniversitaire.</p></article>
+<article class="info-card rv" style="--i:1"><span class="eyebrow">Réseau professionnel</span><h3>Relier les parcours et l’expérience</h3><p>Le Réseau professionnel de l’AUPROHADA rapproche les membres engagés dans la vie professionnelle et les acteurs qui contribuent à la promotion du droit OHADA.</p><p>Il favorise les échanges d’expérience, la transmission de connaissances pratiques et les liens entre les générations de juristes.</p></article>
+<article class="info-card rv" style="--i:2"><span class="eyebrow">Coordination</span><h3>Une action concertée</h3><p>La coordination nationale et les sections universitaires œuvrent ensemble à la cohérence des initiatives et au rayonnement du droit OHADA.</p></article>
+</div>
+<h2 class="rv" style="margin-top:56px">Nos sections <em>universitaires</em></h2>
+<div class="section-network-summary rv"><strong>18 sections universitaires</strong><span>Un réseau engagé dans la promotion et la vulgarisation du droit OHADA.</span></div>
+<p class="rv" style="margin-top:18px;color:var(--g);max-width:900px">À travers ses sections universitaires, l’AUPROHADA mobilise les étudiants et les acteurs du monde juridique autour de la promotion du droit OHADA. Ses initiatives contribuent au développement des connaissances juridiques, à la formation pratique et au rapprochement entre l’université et les professionnels du droit.</p>
+<h3 class="rv" style="margin-top:34px">Implantations universitaires</h3>
+<div class="info-grid" id="sections-list"></div>
+<div class="notice rv">Vous souhaitez rejoindre une section ou contribuer à ses activités ? Écrivez-nous pour être orienté vers le réseau universitaire.</div>
+<h2 class="rv" style="margin-top:56px">Adhésion et partenariats</h2>
+<div class="info-grid">
+<article class="info-card rv"><span class="eyebrow">Adhérer</span><h3>Prendre part à la vie associative</h3><p>Étudiants, jeunes juristes, anciens membres et professionnels intéressés peuvent prendre contact pour connaître les conditions d’adhésion en vigueur et les activités proposées.</p><a href="#contact">Demander les modalités d’adhésion ↗</a></article>
+<article class="info-card rv" style="--i:1"><span class="eyebrow">Collaborer</span><h3>Construire des projets utiles</h3><p>L’AUPROHADA est ouverte aux collaborations avec les universités, institutions, professionnels du droit, entreprises et organisations partageant ses objectifs, sous réserve de partenariats confirmés.</p><a href="#contact">Proposer une collaboration ↗</a></article>
+</div>
+</div>
+</section>
+
+<!-- OHADA -->
+<section class="page wrap" id="ohada">
+<div class="ph rv"><h1>L’OHADA <em>en bref</em></h1><p>Créée par le Traité de Port-Louis du 17 octobre 1993, l’Organisation pour l’Harmonisation en Afrique du Droit des Affaires réunit 17 États autour de règles communes destinées à renforcer la sécurité juridique et judiciaire et à soutenir les activités économiques.</p></div>
+<div class="sec">
+<h2 class="rv">Un droit des affaires <em>harmonisé</em></h2>
+<p class="rv" style="margin-top:16px;color:var(--g);max-width:780px">L’OHADA est une organisation internationale créée par le Traité de Port-Louis du 17 octobre 1993, révisé à Québec le 17 octobre 2008. Elle vise à harmoniser et moderniser le droit des affaires afin de faciliter les échanges et les investissements, tout en améliorant la sécurité juridique des entreprises. Les Actes uniformes adoptés par le Conseil des ministres instaurent des règles communes, directement applicables et obligatoires dans les États membres, sous réserve des dispositions propres à chaque texte.</p>
+<div class="tl" style="margin-top:30px">
+<div class="rv"><b>1993</b>Traité adopté à Port-Louis (Île Maurice) le 17 octobre.</div>
+<div class="rv" style="--i:1"><b>2008</b>Traité révisé à Québec (Canada) le 17 octobre.</div></div>
+<h2 class="rv" style="margin-top:56px">Un espace de <em>17 États membres</em></h2>
+<p class="rv" style="margin-top:12px;color:var(--g);max-width:780px">L’Organisation rassemble des États d’Afrique de l’Ouest, d’Afrique centrale et de l’océan Indien. Le Traité prévoit également des modalités d’adhésion pour d’autres États, selon les conditions qu’il fixe.</p>
+<div class="chips rv"><span>Bénin</span><span>Burkina Faso</span><span>Cameroun</span><span>Comores</span><span>Congo</span><span>Côte d’Ivoire</span><span>Gabon</span><span>Guinée</span><span>Guinée-Bissau</span><span>Guinée équatoriale</span><span>Mali</span><span>Niger</span><span>République centrafricaine</span><span>République démocratique du Congo</span><span>Sénégal</span><span>Tchad</span><span>Togo</span></div>
+<h2 class="rv" style="margin-top:56px">Les institutions</h2>
+<p class="rv" style="margin-top:12px;color:var(--g);max-width:780px">Le dispositif régional associe les organes politiques, l’administration permanente et deux institutions spécialisées. À l’échelle de chaque État membre, une Commission nationale OHADA contribue à la concertation et à la promotion du droit harmonisé.</p>
+<div class="g3" style="margin-top:24px">
+<article class="info-card rv"><span class="eyebrow">Organe politique</span><h3>Conférence des Chefs d’État et de Gouvernement</h3><p>Elle définit les grandes orientations de l’Organisation.</p></article>
+<article class="info-card rv" style="--i:1"><span class="eyebrow">Organe politique</span><h3>Conseil des ministres</h3><p>Il adopte notamment les Actes uniformes et les décisions relevant de sa compétence.</p></article>
+<article class="info-card rv" style="--i:2"><span class="eyebrow">Organe exécutif</span><h3>Secrétariat permanent</h3><p>Il assiste le Conseil des ministres et coordonne la préparation et le suivi de l’adoption des Actes uniformes.</p></article>
+<article class="info-card rv"><span class="eyebrow">Juridiction régionale</span><h3>Cour Commune de Justice et d’Arbitrage (CCJA)</h3><p>Elle exerce les compétences juridictionnelles et d’arbitrage que lui attribuent les textes OHADA, notamment en matière d’interprétation et d’application des Actes uniformes.</p></article>
+<article class="info-card rv" style="--i:1"><span class="eyebrow">Formation et recherche</span><h3>ERSUMA</h3><p>L’École Régionale Supérieure de la Magistrature forme et perfectionne les professionnels du droit et mène des activités de recherche en droit des affaires.</p></article>
+<article class="info-card rv" style="--i:2"><span class="eyebrow">Relais national</span><h3>Commissions nationales OHADA</h3><p>Dans chaque État membre, elles servent de cadre de concertation et participent à la promotion du droit OHADA et au suivi de son application.</p></article>
+</div>
+<h2 class="rv" style="margin-top:56px">Quelques matières des Actes uniformes</h2>
+<p class="rv" style="margin-top:12px;color:var(--g);max-width:780px">Les Actes uniformes couvrent les principales matières du droit des affaires. Ils s’appliquent dans les États membres selon leur champ et leurs dispositions d’entrée en vigueur. Parmi les textes récents figure également le système comptable des entités à but non lucratif (SYCEBNL). Découvrez quelques domaines étudiés et approfondis au sein de l’association.</p>
+<div class="g3" id="actes" style="margin-top:24px"></div>
+<h2 class="rv" style="margin-top:56px">Ressources et actualités</h2>
+<p class="rv" style="margin-top:12px;color:var(--g);max-width:780px">Consultez les textes officiels et les informations de référence sur OHADA.com. Ce site de diffusion du droit OHADA a été lancé par l’UNIDA (Association pour l’Unification du Droit en Afrique), association créée en 1998 et distincte des organes de l’Organisation.</p>
+<div class="resource-list rv">
+<a class="resource-link" href="https://www.ohada.com/l-ohada/presentation-de-l-ohada.html" target="_blank" rel="noopener noreferrer"><span>Présentation générale de l’OHADA · OHADA.com</span>↗</a>
+<a class="resource-link" href="https://www.ohada.com/l-ohada/institutions-de-l-ohada.html" target="_blank" rel="noopener noreferrer"><span>Institutions de l’OHADA · OHADA.com</span>↗</a>
+<a class="resource-link" href="https://www.ohada.com/textes-ohada/actes-uniformes.html" target="_blank" rel="noopener noreferrer"><span>Textes et Actes uniformes · OHADA.com</span>↗</a>
+<a class="resource-link" href="https://www.ohada.com/l-unida.html" target="_blank" rel="noopener noreferrer"><span>Présentation de l’UNIDA et d’OHADA.com</span>↗</a>
+<a class="resource-link" href="https://www.ohada.com/actualite.html?annonceur=auprohada" target="_blank" rel="noopener noreferrer"><span>Actualités de l’AUPROHADA</span>↗</a>
+</div>
+</div>
+</section>
+
+<!-- ACTIVITÉS -->
+<section class="page wrap" id="activites">
+<div class="ph rv"><h1>Nos <em>activités</em></h1><p>Des actions de formation, de réflexion et de mise en pratique pour rapprocher les étudiants du droit OHADA et des réalités professionnelles.</p></div>
+<div class="sec"><div class="g3" id="alist"></div>
+<h2 class="rv" style="margin-top:56px">Temps fort <em>en archive</em></h2>
+<div class="archive rv"><b>12–16 mai 2026</b><p><strong>7e édition de la Semaine OHADA · Abidjan.</strong> Au programme : compétitions de Crack OHADA et de plaidoirie, avec une cérémonie de clôture à la Cour Commune de Justice et d’Arbitrage. Les échanges ont porté sur l’harmonisation du régime juridique des sociétés coopératives et le bilan de l’Acte uniforme correspondant.</p></div>
+<h2 class="rv" style="margin-top:56px">Actualités et archives</h2>
+<p class="rv" style="margin-top:12px;color:var(--g);max-width:780px">Retrouvez les temps forts, les comptes rendus et les appels à participation de l’association et de ses sections.</p>
+<div class="resource-list rv"><a class="resource-link" href="https://www.ohada.com/actualite.html?annonceur=auprohada" target="_blank" rel="noopener noreferrer"><span>Voir toutes les actualités</span>↗</a></div>
+<h2 class="rv" style="margin-top:56px">La vie de l’association <em>en images</em></h2>
+<div class="g3 photo-gallery" id="galerie"></div>
+<p class="rv" style="margin-top:22px;color:var(--g);font-size:.86rem">Des images de nos rencontres, formations et concours universitaires.</p></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page wrap" id="contact">
+<div class="ph rv"><h1>Contact et <em>adhésion</em></h1><p>Pour toute question ou demande de collaboration, écrivez-nous.</p></div>
+<div class="sec cg">
+<form id="fm" class="rv"><label>Nom complet<input name="n" required autocomplete="name"></label><label>E-mail<input type="email" name="e" required autocomplete="email"></label><label>Objet de la demande<input name="s" required></label><label>Message<textarea name="m" rows="5" required></textarea></label><button class="btn" type="submit" style="justify-self:start">Préparer un e-mail <b>↗</b></button><div class="ok" id="ok" role="status">Votre logiciel de messagerie va s’ouvrir avec votre message adressé à la section IUA. Relisez-le avant l’envoi.</div></form>
+<div class="tl rv" style="grid-template-columns:1fr"><div><b style="font-size:1.4rem">Nous contacter</b>Pour toute question ou demande d’information, écrivez-nous par courriel.<p style="margin-top:14px"><a href="mailto:auprohada4@gmail.com" style="color:#ff9a66">auprohada4@gmail.com</a></p></div></div>
+</div>
+<div class="resource-list rv" style="max-width:760px;margin:0 auto"><a class="resource-link" href="https://www.ohada.com/actualite.html?annonceur=auprohada" target="_blank" rel="noopener noreferrer"><span>Actualités et publications</span>↗</a></div>
+</section>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+<div><a class="logo" href="#accueil"><img src="IMAGES/logo.jpg" alt="">AUPROHADA</a><p>Association Universitaire pour la Promotion du Droit OHADA.</p></div>
+<div><a href="#apropos">À propos</a><a href="#ohada">L’OHADA</a><a href="#activites">Activités</a><a href="#contact">Contact</a></div>
+<div><b>Publications</b><p>Consultez les annonces et comptes rendus de l’AUPROHADA sur OHADA.com.</p><a href="https://www.ohada.com/actualite.html?annonceur=auprohada" target="_blank" rel="noopener noreferrer">Voir les actualités ↗</a></div></div>
+<div class="cp">© <span id="yr"></span> AUPROHADA. Tous droits réservés.</div></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const pil=[["⚖","Promouvoir le droit OHADA","Rendre les textes, Actes uniformes et notions du droit des affaires harmonisé plus accessibles."],["🎓","Cultiver l’excellence","Développer la rigueur, la recherche, l’esprit critique et l’éloquence."],["📚","Former à la pratique","Apprendre par des conférences, des exercices et des mises en situation."],["🤝","Construire un réseau","Rapprocher étudiants, anciens membres et professionnels du droit."]];
+$("#pil").innerHTML=pil.map((p,i)=>`<a href="#activites" class="card rv" style="--i:${i}"><div class="ic">${p[0]}</div><h3>${p[1]}</h3><p>${p[2]}</p><span class="arr"><b>↗</b></span></a>`).join("");
+const sections=[
+["AUPROHADA-UFHB","Université Félix Houphouët-Boigny","Cocody · Abidjan","Formation en création de société en droit OHADA organisée en janvier 2026.","https://www.ohada.com/actualite/8148/compte-rendu-de-formation-en-creation-de-societe-universite-felix-houphouet-boigny-abidjan-samedi-31-janvier-2026.html"],
+["AUPROHADA-UAO","Université Alassane Ouattara","Bouaké","Formation sur l’utilisation du site OHADA.com organisée à l’université en février 2026.","https://www.ohada.com/actualite/8164/compte-rendu-de-la-formation-sur-lutilisation-du-site-wwwohadacom-le-13-fevrier-2026-a-bouake.html"],
+["AUPROHADA-UCLM","Université Charles Louis de Montesquieu","Abidjan","Appel à candidatures de la section pour la 6e édition de la Semaine OHADA en 2025.","https://www.ohada.com/actualite/7725/appel-a-candidature-auprohada-uclm-6e-edition-de-la-semaine-ohada.html"],
+["AUPROHADA-UIPA","Université Internationale Privée d’Abidjan","Abidjan","Lancement des activités de la section à l’occasion de la 7e Semaine OHADA en mars 2026.","https://www.ohada.com/actualite/8184/lancement-officiel-des-activites-du-club-ohada-de-luniversite-internationale-privee-dabidjan-le-06-mars-2026-a-abidjan.html"],
+["AUPROHADA-IUA","Institut Universitaire d’Abidjan","Abidjan","Finale du concours interne de plaidoirie organisée en mars 2026.","https://www.ohada.com/actualite/8217/compte-rendu-de-la-finale-du-concours-interne-de-plaidoirie-de-lauprohada-section-institut-universitaire-dabidjan.html"],
+["AUPROHADA-UCAO-UUA","Université Catholique de l’Afrique de l’Ouest · Unité universitaire d’Abidjan","Abidjan","Deuxième édition de « À la rencontre des professionnels du droit », en mars 2026.","https://www.ohada.com/actualite/8234/compte-rendu-de-la-2e-edition-de-lactivite-a-la-rencontre-des-professionnels-du-droit-le-28-mars-2026-a-abidjan.html"],
+["AUPROHADA-UMECI","Université Méthodiste de Côte d’Ivoire","Abidjan","Cérémonie d’accueil des nouveaux étudiants et lancement des activités 2025–2026.","https://www.ohada.com/actualite/8064/ceremonie-daccueil-des-nouveaux-etudiants-de-luniversite-methodiste-de-cote-divoire-et-lancement-officiel-des-activites-2025-2026-de-lauprohada-umeci.html"],
+["Section AUPROHADA-UJLoG · 2024","Université Jean Lorougnon Guédé","Daloa","Rencontre avec les nouveaux étudiants de la faculté de droit en octobre 2024.","https://www.ohada.com/actualite/7534/ceremonie-de-reception-des-nouveaux-etudiants-de-lauprohada-section-ujlog-de-daloa-le-30-octobre-2024.html"],
+["AUPROHADA-UA","Université de l’Atlantique","Abidjan","Sortie immersive au Tribunal de première instance d’Abobo en février 2026.","https://www.ohada.com/actualite/8212/compte-rendu-de-la-sortie-immersive-au-tribunal-de-premiere-instance-dabobo-13-fevrier-2026.html"],
+["AUPROHADA-UNS","Université Nord-Sud","Abidjan","Formations préparatoires au concours national de plaidoirie de la 7e Semaine OHADA en 2026.","https://www.ohada.com/actualite/8198/7e-edition-de-la-semaine-ohada-formations-preparatoires-au-concours-national-de-plaidoirie-du-12-au-18-mai-2026-a-abidjan.html"],
+["Adhésion annoncée en 2026","Institut Universitaire Saint-Jean Paul II","Yamoussoukro","Adhésion de l’établissement à la mission de l’AUPROHADA annoncée en mars 2026.","https://www.ohada.com/actualite/8221/adhesion-de-linstitut-universitaire-saint-jean-paul-ii-a-lauprohada.html"],
+["Adhésion annoncée en 2021","Institut Universitaire Polytechnique d’Abidjan","Abidjan","L’établissement a rejoint l’élan de promotion du droit OHADA en septembre 2021.","https://www.ohada.com/actualite/6030/adhesion-de-linstitut-universitaire-polytechnique-dabidjan-a-lelan-de-promotion-du-droit-ohada-en-cote-divoire.html"],
+["Adhésion annoncée en 2021","Université Internationale Al Moustapha de Côte d’Ivoire","Abidjan","L’adhésion de l’établissement à l’AUPROHADA a été annoncée en janvier 2021.","https://www.ohada.com/actualite/5726/adhesion-de-luniversite-internationale-al-moustapha-de-cote-divoire-a-lelan-de-promotion-du-droit-ohada-en-cote-divoire-dans-le-cadre-de-lauprohada.html"],
+["Adhésion annoncée en 2021","Université des Innovations culturelles et des métiers du virtuel","","L’adhésion de l’établissement à l’AUPROHADA a été annoncée en février 2021.","https://www.ohada.com/actualite/5728/adhesion-de-universite-des-innovations-culturelles-et-des-metiers-du-virtuel-a-lelan-de-promotion-du-droit-ohada-en-cote-divoire-dans-le-cadre-de-lauprohada.html"]
+];
+$("#sections-list").innerHTML=sections.map(([name,establishment,city,description,url],i)=>`<article class="info-card rv" style="--i:${i%2}"><span class="eyebrow">${name}</span><h3>${establishment}</h3>${city?`<p><strong>${city}</strong></p>`:""}<p>${description}</p><a class="section-report" href="${url}" target="_blank" rel="noopener noreferrer">Consulter la publication ↗</a></article>`).join("");
+const actes=[["Droit commercial général","Règles communes applicables aux actes de commerce et aux activités commerciales."],["Sociétés commerciales et GIE","Constitution, fonctionnement et organisation des sociétés commerciales et des groupements d’intérêt économique."],["Sûretés","Garanties mobilisables pour sécuriser les obligations et le crédit."],["Recouvrement et voies d’exécution","Procédures de recouvrement des créances et d’exécution forcée."],["Procédures collectives","Prévention et traitement des difficultés des entreprises."],["Arbitrage","Règlement des différends par la voie arbitrale dans le cadre des textes applicables."],["Médiation","Règlement amiable des différends avec l’intervention d’un tiers."],["Comptabilité et information financière","Règles comptables communes et présentation de l’information financière des entités."],["Entités à but non lucratif (SYCEBNL)","Système comptable spécifique applicable aux entités à but non lucratif, adopté en 2022 et publié en 2023."],["Transport de marchandises par route","Règles applicables au contrat de transport routier de marchandises."],["Sociétés coopératives","Constitution et fonctionnement des sociétés coopératives dans l’espace OHADA."]];
+const bookIcon='<span class="ic book-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14M3.5 4.8A2.8 2.8 0 0 1 6.3 2H12v19H6.3a2.8 2.8 0 0 0-2.8 2.8zM20.5 4.8A2.8 2.8 0 0 0 17.7 2H12v19h5.7a2.8 2.8 0 0 1 2.8 2.8z"/></svg></span>';
+$("#actes").innerHTML=actes.map(([a,description],i)=>`<article class="card rv" style="--i:${i%3}">${bookIcon}<h3>${a}</h3><p>${description}</p></article>`).join("");
+const acts=[["Concours de plaidoirie","Préparer un dossier, construire une argumentation juridique et défendre une position avec rigueur et éloquence.","IMAGES/686540293_1461485166020186_4757292241862499057_n.jpg"],["Conférences, colloques et panels","Rencontres consacrées au droit OHADA, au droit des sociétés, à la sécurité juridique, à l’insertion professionnelle et aux enjeux contemporains.","IMAGES/614021621_1359214489580588_2838388953701913086_n.jpg"],["Crack OHADA","Évaluer et renforcer la connaissance des textes et des matières du droit OHADA.","IMAGES/706744428_1477171611118208_2033913880954312227_n.jpg"],["Formations pratiques","Renforcer les compétences juridiques et associatives : rédaction, comptes rendus, procès-verbaux et rapports d’activités.","IMAGES/706317877_1476869601148409_7075361580900665148_n.jpg"],["Rencontres professionnelles","Découvrir les métiers du droit, les compétences attendues et les parcours de praticiens.","IMAGES/499502606_1153641000137939_1989514041856282511_n.jpg"],["Caravanes de sensibilisation","Faire connaître le droit OHADA auprès des publics universitaires selon les programmes organisés par les sections.","IMAGES/499545453_1154316950070344_5346061862304732221_n.jpg"],["Journées thématiques","Approfondir des sujets tels que l’arbitrage, la médiation et les modes alternatifs de règlement des conflits.","IMAGES/705958315_1477171934451509_2564470403790366706_n.jpg"],["Vie associative et coopération","Favoriser le travail collectif, la coopération entre sections et le développement des compétences associatives.","IMAGES/651211965_1413280214174015_2753181910382661747_n.jpg"]];
+$("#alist").innerHTML=acts.map((a,i)=>`<article class="card activity-item rv" style="--i:${i%3}"><img class="activity-card-photo" src="${a[2]}" alt="" loading="lazy"><h3>${a[0]}</h3><p>${a[1]}</p></article>`).join("");
+const gallery=[["499502606_1153641000137939_1989514041856282511_n.jpg","Membres réunis lors d’une activité universitaire"],["499545453_1154316950070344_5346061862304732221_n.jpg","Prise de parole lors d’une rencontre juridique"],["614021621_1359214489580588_2838388953701913086_n.jpg","Participants réunis lors d’une rencontre universitaire"],["651211965_1413280214174015_2753181910382661747_n.jpg","Participants à une activité associative"],["686540293_1461485166020186_4757292241862499057_n.jpg","Exercice de plaidoirie"],["705958315_1477171934451509_2564470403790366706_n.jpg","Rencontre universitaire autour du droit OHADA"],["706317877_1476869601148409_7075361580900665148_n.jpg","Échanges et travail autour des textes juridiques"],["706744428_1477171611118208_2033913880954312227_n.jpg","Ouvrages et trophées présentés lors d’un événement"],["706753133_1477171777784858_3419802091682389537_n.jpg","Trophée du Concours National de Plaidoirie OHADA"],["706753180_1477171714451531_294201025880612626_n.jpg","Trophée et ouvrages présentés lors d’une remise de prix"],["706781628_1476871791148190_705226284117894132_n.jpg","Échange entre participants et intervenants"],["708050046_1477171887784847_6663328911012317182_n.jpg","Trophée et ouvrages associés à une compétition"]];
+$("#galerie").innerHTML=gallery.map(([file,caption],i)=>`<figure class="rv" style="--i:${i%3}"><img src="IMAGES/${file}" alt="${caption}" loading="lazy"><figcaption>${caption}</figcaption></figure>`).join("");
+const dk=document.createElement("div");
+dk.innerHTML=`<section class="dark rv"><div class="dh"><div><span class="tag" style="color:var(--o);border-color:#3a3a48">Nos activités</span><h2>Des programmes pour <em>chaque ambition</em></h2></div><div class="ctr"><button id="pv" aria-label="Précédent">←</button><button id="nx" aria-label="Suivant">→</button></div></div><div class="trk" id="trk">${acts.map(a=>`<a href="#activites" class="act"><div class="im"><img src="${a[2]}" alt="" loading="lazy"></div><h3>${a[0]}</h3><p>${a[1]}</p></a>`).join("")}</div></section>`;
+$("#accueil").append(dk);
+const T=["Promouvoir le droit OHADA, renforcer la formation juridique et rapprocher l’université des professionnels.","Contribuer à l’émergence d’une communauté de juristes compétents et rigoureux, engagés dans le développement du droit des affaires en Afrique.","Créée le 31 janvier 2017 à l’initiative de Koffi Roméo Kouamé, l’AUPROHADA accompagne la progression du droit OHADA en milieu universitaire et professionnel."];
+$$(".tabs button").forEach(b=>b.onclick=()=>{$$(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));const p=$("#tp");p.style.animation="none";p.offsetWidth;p.style.animation="";p.textContent=T[b.dataset.t]});
+$("#tp").textContent=T[0];
+$("#pv").onclick=()=>$("#trk").scrollBy({left:-360,behavior:"smooth"});
+$("#nx").onclick=()=>$("#trk").scrollBy({left:360,behavior:"smooth"});
+const hero=$("#accueil .hero"),heroSlides=$$(".hero-slide");
+let heroIndex=0,heroTimer=null;
+function setHeroSlide(index){heroIndex=(index+heroSlides.length)%heroSlides.length;heroSlides.forEach((slide,i)=>slide.classList.toggle("is-active",i===heroIndex));$("#hero-counter").textContent=`${String(heroIndex+1).padStart(2,"0")} / ${String(heroSlides.length).padStart(2,"0")}`}
+function stopHeroSlideshow(){clearInterval(heroTimer);heroTimer=null}
+function startHeroSlideshow(){stopHeroSlideshow();if(document.hidden||hero.matches(":hover")||matchMedia("(prefers-reduced-motion: reduce)").matches)return;heroTimer=setInterval(()=>setHeroSlide(heroIndex+1),6000)}
+$("#hero-prev").onclick=()=>{setHeroSlide(heroIndex-1);startHeroSlideshow()};
+$("#hero-next").onclick=()=>{setHeroSlide(heroIndex+1);startHeroSlideshow()};
+hero.addEventListener("pointerenter",stopHeroSlideshow);
+hero.addEventListener("pointerleave",startHeroSlideshow);
+document.addEventListener("visibilitychange",startHeroSlideshow);
+startHeroSlideshow();
+$("#yr").textContent=new Date().getFullYear();
+$("#fm").onsubmit=e=>{e.preventDefault();const f=e.currentTarget,d=new FormData(f),body=`Nom : ${d.get("n")}\nE-mail : ${d.get("e")}\n\n${d.get("m")}`;$("#ok").style.display="block";location.href=`mailto:auprohada4@gmail.com?subject=${encodeURIComponent(d.get("s"))}&body=${encodeURIComponent(body)}`};
+$("#bg").onclick=()=>{const o=$("#lk").classList.toggle("open");$("#bg").setAttribute("aria-expanded",o)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add("in");setTimeout(()=>t.classList.add("done"),1100);io.unobserve(t)}}),{threshold:.12});
+function reveal(){$$(".page.on .rv").forEach(e=>{e.classList.remove("in","done");io.observe(e)})}
+const ok=["accueil","apropos","ohada","activites","contact"];
+let cur=null,busy=false;
+function show(id){$$(".page").forEach(p=>p.classList.toggle("on",p.id===id));$$(".links a").forEach(a=>a.classList.toggle("on",a.dataset.p===id));$("#lk").classList.remove("open");$("#bg").setAttribute("aria-expanded","false");scrollTo(0,0);cur=id;if(id==="accueil")startHeroSlideshow();else stopHeroSlideshow();reveal()}
+function route(first){let id=location.hash.slice(1);if(!ok.includes(id))id="accueil";if(first||id===cur)return show(id);
+if(busy)return;busy=true;const c=$("#cur"),o={duration:520,easing:"cubic-bezier(.77,0,.18,1)",fill:"forwards"};
+c.animate([{transform:"translateY(100%)"},{transform:"translateY(0)"}],o).finished.then(()=>{show(id);return c.animate([{transform:"translateY(0)"},{transform:"translateY(-100%)"}],{...o,delay:120}).finished}).then(()=>{busy=false;if(location.hash.slice(1)!==cur)route(false)})}
+document.addEventListener("click",e=>{const link=e.target.closest('a[href^="#"]');if(!link)return;const id=link.getAttribute("href").slice(1);if(ok.includes(id)&&id===cur){e.preventDefault();show(id)}});
+addEventListener("hashchange",()=>route(false));route(true);
+const pb=$("#pb"),nv=$("#nv"),up=$("#up");
+addEventListener("scroll",()=>{const h=document.documentElement,s=h.scrollTop,m=h.scrollHeight-innerHeight;pb.style.transform=`scaleX(${m>0?s/m:0})`;nv.classList.toggle("sm",s>40);up.classList.toggle("on",s>500)},{passive:true});
+up.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+document.addEventListener("click",e=>{const b=e.target.closest(".btn,.ctr button,.tabs button,.nl button");if(!b)return;const r=b.getBoundingClientRect(),d=Math.max(r.width,r.height),s=document.createElement("span");s.className="rp";s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;b.append(s);setTimeout(()=>s.remove(),600)});
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,n=+el.dataset.n,t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
+$$("[data-n]").forEach(e=>co.observe(e));
+if(matchMedia("(hover:hover) and (prefers-reduced-motion:no-preference)").matches){
+document.addEventListener("pointermove",e=>{
+const b=e.target.closest(".btn");if(b){const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.15}px,${(e.clientY-r.top-r.height/2)*.25}px)`}
+const c=e.target.closest(".card");if(c){const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-6px)`}
+const h=e.target.closest(".hero");if(h){const r=h.getBoundingClientRect();h.style.setProperty("--mx",e.clientX-r.left+"px");h.style.setProperty("--my",e.clientY-r.top+"px")}});
+document.addEventListener("pointerout",e=>{const t=e.target.closest(".btn,.card");if(t&&!t.contains(e.relatedTarget))t.style.transform=""})}
+</script>
+</body>
+</html>
